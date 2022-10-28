@@ -14,14 +14,23 @@ namespace MvcMovie.Services.Repositorio
             _context = new ContextoFactory().CreateDbContext(args);
         }
 
-        public Task Add(Movie movie)
+        public async Task Add(Movie movie)
         {
-            throw new NotImplementedException();
+            _context.Add(movie);
+            await _context.SaveChangesAsync();
         }
 
-        public Task DeleteById(int id)
+        public async Task DeleteById(int id)
         {
-            throw new NotImplementedException();
+            if (_context.Movie is not null)
+            {
+                var elemento = await GetById(id);
+                if (elemento != null)
+                {
+                    _context.Movie.Remove(elemento);
+                    _context.SaveChanges();
+                }
+            }
         }
 
         public async Task<List<Movie>> GetAll()
@@ -35,9 +44,10 @@ namespace MvcMovie.Services.Repositorio
             return movie;
         }
 
-        public Task Update(Movie movie)
+        public async Task Update(Movie movie)
         {
-            throw new NotImplementedException();
+            _context.Update(movie);
+            await _context.SaveChangesAsync();
         }
     }
 }

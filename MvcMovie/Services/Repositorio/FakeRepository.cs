@@ -13,9 +13,9 @@ namespace MvcMovie.Services.Repositorio
             movies.Add(new Movie() { Id = 3, Genre = "Ficcion", ReleaseDate = DateTime.Now, Price = 98, Title = "Avatar3" });
 
         }
-        public Task Add(Movie movie)
+        public async Task Add(Movie movie)
         {
-            throw new NotImplementedException();
+            await Task.Run(()=>movies.Add(movie));
         }
 
         public Task DeleteById(int id)
@@ -33,9 +33,16 @@ namespace MvcMovie.Services.Repositorio
             return await Task.Run(()=>movies.Find(x => x.Id == id));    
         }
 
-        public Task Update(Movie movie)
+        public async Task Update(Movie movie)
         {
-            throw new NotImplementedException();
+            var peli = await GetById(movie.Id);
+            if (peli != null)
+            {
+                peli.Title = movie.Title;
+                peli.Price = movie.Price;
+                peli.ReleaseDate = movie.ReleaseDate;
+                peli.Genre = movie.Genre;
+            }  
         }
     }
 }
