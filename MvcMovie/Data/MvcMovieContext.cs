@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -15,7 +16,7 @@ namespace MvcMovie.Data
            
         }
 
-
+        public DbSet<MvcMovie.Models.Categoria> Categoria { get; set; } = default;
         public DbSet<MvcMovie.Models.Movie> Movie { get; set; } = default!;
     }
 }

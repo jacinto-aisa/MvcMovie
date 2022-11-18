@@ -18,8 +18,8 @@ namespace MvcMovie.Data
         // NOTE: Do not hardcode connection strings in code.  
         // This is hard coded here to limit scope of demo.
         //var connectionString = "Server=tcp:servidormonicasql.database.windows.net,1433;Initial Catalog=MonicaSQL;Persist Security Info=False;User ID=jacinto;Password=P0t@toP0t@to;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-        //var connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=University; Integrated Security=True;";
-        var connectionString = "Server=tcp:servidormovies.database.windows.net,1433;Initial Catalog=mvcmoviebd;Persist Security Info=False;User ID=jacinto;Password=P0t@toP0t@to;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        var connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=MvcMovieDatabase; Integrated Security=True;";
+        //var connectionString = "Server=tcp:servidormovies.database.windows.net,1433;Initial Catalog=mvcmoviebd;Persist Security Info=False;User ID=jacinto;Password=P0t@toP0t@to;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         dbContextBuilder.UseSqlServer(connectionString, sqloptions => {
             sqloptions.EnableRetryOnFailure(
                 maxRetryCount: 5,
